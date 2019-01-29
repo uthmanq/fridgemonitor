@@ -30,10 +30,14 @@ void setup() {
     
     //set custom ip for portal
     //wifiManager.setAPStaticIPConfig(IPAddress(10,0,1,1), IPAddress(10,0,1,1), IPAddress(255,255,255,0));
-if(mySensor.readTempF() >= 30)
-{
-    reportThaw();
-}
+	if(mySensor.readTempF() >= 30)
+	{
+    		reportThaw();
+	}
+	else
+	{
+		ESP.deepSleep(300e6); //Send ESP into deep sleep for 5 minutes.
+	}
 }
 
 void loop() {
